@@ -9,15 +9,15 @@ interface HeaderProps {
 }
 
 export function Header({ tasksCounter }: HeaderProps) {
-  // const tasksCounterText = TODO render 'tarefa' if tasksCounter equals 1, otherwise render 'tarefas'
+   const tasksCounterText = tasksCounter === 1 ? 'tarefa' : 'tarefas'; /* se as tasks for igual a 1, a variavel recebe a string "tarefa", caso contrario recebe "tarefas" */
   
   return (
     <View style={styles.container}>
-      <Image source={logoImg} />
+      <Image source={logoImg} /> 
       
       <View style={styles.tasks}>
         <Text style={styles.tasksCounter}>Você tem </Text>
-        {/* <Text style={styles.tasksCounterBold}>{tasksCounter} {tasksCounterText}</Text> */}
+        <Text style={styles.tasksCounterBold}>{tasksCounter} {tasksCounterText}</Text>
       </View>
     </View>
   )

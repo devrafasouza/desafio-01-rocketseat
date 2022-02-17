@@ -7,27 +7,32 @@ interface TodoInputProps {
 }
 
 export function TodoInput({ addTask }: TodoInputProps) {
-  // const [task, setTask] = useState('');
+   const [task, setTask] = useState('');
 
-  function handleAddNewTask() {
-    //TODO - Call addTask if task not empty and clean input value 
+  function handleAddNewTask() { /* Função que adiciona uma nova tarefas */
+    if(task !== ''){
+      addTask(task);
+      setTask('');
+    }
   }
 
   return (
     <View style={styles.inputContainer}>
       <TextInput 
         style={styles.input} 
-        placeholder="Adicionar novo todo..."
+        placeholder="Adicionar uma nova tarefa..."
         placeholderTextColor="#B2B2B2"
         returnKeyType="send"
         selectionColor="#666666"
-        //TODO - use value, onChangeText and onSubmitEditing props
+        value={task} /* nome da tarefa */
+        onChangeText={setTask} /* No campo input ele captura o que é digitado e seta a tarefa com o "setTask" */
+        onSubmitEditing={handleAddNewTask} /* Faz com que, ao clicar no enviar do teclado, chame a função e adiciona uma nova tarefa */
       />
       <TouchableOpacity
         testID="add-new-task-button"
         activeOpacity={0.7}
         style={styles.addButton}
-        //TODO - onPress prop
+        onPress={handleAddNewTask} /* Ao clicar no botão, chama a função de adicionar uma nova tarefa */
       >
         <Icon name="chevron-right" size={24} color="#B2B2B2" />
       </TouchableOpacity>
